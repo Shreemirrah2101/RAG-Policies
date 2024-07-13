@@ -1,0 +1,11 @@
+llama-index
+llama-index-embeddings-azure-openai
+llama-index-llms-azure-openai
+llama-index-vector-stores-postgres
+azure-storage-blob
+llama-index-readers-azstorage-blob
+streamlit
+transformers
+torch 
+sentence-transformers
+azure-storage-blob
