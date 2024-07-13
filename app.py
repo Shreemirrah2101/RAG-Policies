@@ -118,17 +118,6 @@ postproc = MetadataReplacementPostProcessor(target_metadata_key="window")
 
 response_synthesizer = get_response_synthesizer()
 
-#def step_back(question):
-'''
-def affirm(response):
-    query="""You must answer this with only the following words(exactly the same spelling and capitalization): 'True' or 'False'. Here's a response from an LLM: {response}.
-    I want you to affirm whether the response actually prints the information, in which case your answer must be : True
-    If the response does not print the information:
-        That is, the response if of the following lines: "I don't know", "The information is not provided in the context", etc, your answer must be : False
-    """
-'''
-
-
 def return_response(question):
     st.markdown('Document 1: BPP_Bright final agreement_SPB\n')
     index = VectorStoreIndex.from_vector_store(vector_store=vector_store_1)
@@ -143,7 +132,6 @@ def return_response(question):
     )
 
     response = query_engine.query(question)
-
     st.write(response.response)
     st.write('\n\n'+'Source:\n\n')
     source=response.metadata
