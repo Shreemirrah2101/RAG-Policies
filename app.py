@@ -179,7 +179,6 @@ def return_response(question):
     response = query_engine.query(question)
     check_ans=check(response.response)
     if check_ans=='False':
-        st.write("\n"+check_ans+"\n")
         new_question=question_gen.invoke({"question": question})
         response = query_engine.query(new_question)
         st.write(response.response)
@@ -196,11 +195,11 @@ def return_response(question):
         file=source[i]['file_name']
         ans=''
         page_label=list(set(page_label))
+        page_label.sort()
         for i in range(len(page_label)):
             ans+=str(page_label[i])+','if i!=len(page_label)-1 else str(page_label[i])
         st.markdown(f"[{file}]({blob_url})"+"\tPage(s): "+ans+'\n')
     else:
-        st.write("\n"+check_ans+"\n")
         st.write(response.response)
         st.write('\n\n'+'Source:\n\n')
         source=response.metadata
@@ -215,6 +214,7 @@ def return_response(question):
         file=source[i]['file_name']
         ans=''
         page_label=list(set(page_label))
+        page_label.sort()
         for i in range(len(page_label)):
             ans+=str(page_label[i])+','if i!=len(page_label)-1 else str(page_label[i])
         st.markdown(f"[{file}]({blob_url})"+"\tPage(s): "+ans+'\n')
@@ -231,7 +231,6 @@ def return_response(question):
     response = query_engine.query(question)
     check_ans=check(response.response)
     if check_ans=='False':
-        st.write("\n"+check_ans+"\n")
         new_question=question_gen.invoke({"question": question})
         response = query_engine.query(new_question)        
         st.write(response.response)
@@ -248,11 +247,11 @@ def return_response(question):
         file=source[i]['file_name']
         ans=''
         page_label=list(set(page_label))
+        page_label.sort()
         for i in range(len(page_label)):
             ans+=str(page_label[i])+','if i!=len(page_label)-1 else str(page_label[i])
         st.markdown(f"[{file}]({blob_url})"+"\tPage(s): "+ans+'\n')
     else:
-        st.write("\n"+check_ans+"\n")
         st.write(response.response)
         st.write('\n\n'+'Source:\n\n')
         source=response.metadata
@@ -267,6 +266,7 @@ def return_response(question):
         file=source[i]['file_name']
         ans=''
         page_label=list(set(page_label))
+        page_label.sort()
         for i in range(len(page_label)):
             ans+=str(page_label[i])+','if i!=len(page_label)-1 else str(page_label[i])
         st.markdown(f"[{file}]({blob_url})"+"\tPage(s): "+ans+'\n')
@@ -284,7 +284,6 @@ def return_response(question):
     response = query_engine.query(question)
     check_ans=check(response.response)
     if check_ans=='False':
-        st.write("\n"+check_ans+"\n")
         new_question=question_gen.invoke({"question": question})
         response = query_engine.query(new_question)
         st.write(response.response)
@@ -301,11 +300,11 @@ def return_response(question):
         file=source[i]['file_name']
         ans=''
         page_label=list(set(page_label))
+        page_label.sort()
         for i in range(len(page_label)):
             ans+=str(page_label[i])+','if i!=len(page_label)-1 else str(page_label[i])
         st.markdown(f"[{file}]({blob_url})"+"\tPage(s): "+ans+'\n')
     else:
-        st.write("\n"+check_ans+"\n")
         st.write(response.response)
         st.write('\n\n'+'Source:\n\n')
         source=response.metadata
@@ -320,6 +319,7 @@ def return_response(question):
         file=source[i]['file_name']
         ans=''
         page_label=list(set(page_label))
+        page_label.sort()
         for i in range(len(page_label)):
             ans+=str(page_label[i])+','if i!=len(page_label)-1 else str(page_label[i])
         st.markdown(f"[{file}]({blob_url})"+"\tPage(s): "+ans+'\n')        
@@ -332,7 +332,6 @@ def return_response(question):
     response = query_engine.query(question)
     check_ans=check(response.response)
     if check_ans=='False':
-        st.write("\n"+check_ans+"\n")
         new_question=question_gen.invoke({"question": question})
         response = query_engine.query(new_question)        
         st.write(response.response)
@@ -349,11 +348,11 @@ def return_response(question):
         file=source[i]['file_name']
         ans=''
         page_label=list(set(page_label))
+        page_label.sort()
         for i in range(len(page_label)):
             ans+=str(page_label[i])+','if i!=len(page_label)-1 else str(page_label[i])
         st.markdown(f"[{file}]({blob_url})"+"\tPage(s): "+ans+'\n')
     else:
-        st.write("\n"+check_ans+"\n")
         st.write(response.response)
         st.write('\n\n'+'Source:\n\n')
         source=response.metadata
@@ -368,14 +367,17 @@ def return_response(question):
         file=source[i]['file_name']
         ans=''
         page_label=list(set(page_label))
+        page_label.sort()
         for i in range(len(page_label)):
             ans+=str(page_label[i])+','if i!=len(page_label)-1 else str(page_label[i])
         st.markdown(f"[{file}]({blob_url})"+"\tPage(s): "+ans+'\n')        
-st.set_page_config(page_title='RAG Questions Answered Extractor')
-st.header('RAG Questions Answered Extractor')
+st.set_page_config(page_title='RAG - BrightMLS Policies')
+st.header('RAG - BrightMLS Policies')
 input=st.text_input('Input: ',key="input")
 submit=st.button("Ask")
 
 if submit:
     st.subheader("Implementing...")
+    input=input.replace("parties","companies")
+    input=input.replace("party","company")
     return_response(input)
