@@ -9,3 +9,5 @@ transformers
 torch 
 sentence-transformers
 azure-storage-blob
+langchain
+langchain-openai
